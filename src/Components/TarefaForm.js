@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 
 const TarefaForm = (props) => {
 
-    const [ input, setInput ] = useState('')
+    const [ input, setInput ] = useState(props.editar ? props.editar.value: '');
 
     const inputRef = useRef(null)
 
@@ -26,16 +26,31 @@ const TarefaForm = (props) => {
 
     return (
         <form className="tarefa-form" onSubmit={handleSubmit}>
-
-            <input
-             className="tarefa-input"
-             type="text" 
-             placeholder="Adicionar uma tarfefa" 
-             value={input} 
-             name="text"
-             onChange={handleChange} 
-             ref={inputRef} />
-             <button className="tarefa-button"> Adicionar tarefa</button>
+            {props.editar ? 
+            (
+                <>
+                <input
+                className="tarefa-input edit"
+                type="text" 
+                placeholder="Editar tarfefa" 
+                value={input} 
+                name="text"
+                onChange={handleChange} 
+                ref={inputRef} />
+                <button className="tarefa-button edit"> Editar tarefa</button></>) : 
+            (
+                <>
+                <input
+                className="tarefa-input"
+                type="text" 
+                placeholder="Adicionar uma tarfefa" 
+                value={input} 
+                name="text"
+                onChange={handleChange} 
+                ref={inputRef} />
+                <button className="tarefa-button"> Adicionar tarefa</button></>
+            )}
+            
         </form>
     )
 }
