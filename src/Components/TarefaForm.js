@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 const TarefaForm = (props) => {
 
     const [ input, setInput ] = useState('')
+
+    const inputRef = useRef(null)
+
+    useEffect(() => {
+        inputRef.current.focus()
+    })
 
     const handleChange = e => {
         setInput(e.target.value)
@@ -27,7 +33,8 @@ const TarefaForm = (props) => {
              placeholder="Adicionar uma tarfefa" 
              value={input} 
              name="text"
-             onChange={handleChange} />
+             onChange={handleChange} 
+             ref={inputRef} />
              <button className="tarefa-button"> Adicionar tarefa</button>
         </form>
     )

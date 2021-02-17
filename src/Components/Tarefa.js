@@ -26,7 +26,7 @@ const Tarefa = ({tarefas, completeTodo, removerTarefa, updateTarefa}) => {
     
     return tarefas.map( (tarefa, index) => (
         <div
-         className={tarefa.isComplete ? 'tarefa-completa' : 'tarefa-incompleta'} 
+         className={tarefa.isComplete ? 'todo-row complete' : 'todo-row '} 
          key={index}>
 
              <div key={tarefa.id} onClick={() => completeTodo(tarefa.id)}>
