@@ -5,13 +5,24 @@ import { TiEdit } from 'react-icons/ti'
 
 
 
-const Tarefa = ({tarefas, completeTodo, removerTarefa }) => {
+const Tarefa = ({tarefas, completeTodo, removerTarefa, updateTarefa}) => {
 
     const [ editar, setEditar ] = useState({
         id:null,
         value: ''
     })
 
+    const submitUpdate = value => {
+        updateTarefa(editar.id, value);
+        setEditar({
+            id: null,
+            value: ''
+        })
+    }
+
+    if(editar.id) {
+        return <TarefaForm editar={editar} onSubmit={submitUpdate} />;
+    }
     
     return tarefas.map( (tarefa, index) => (
         <div

@@ -14,7 +14,14 @@ const TarefaLista = () => {
         const novaTarefa = [tarefa, ...tarefas];
 
         setTarefas(novaTarefa)
-        console.log(...tarefas)
+    }
+
+    const updateTarefa = (tarefaId, novoValor) =>{
+        if(!novoValor.text || /^\s*$/.test(novoValor.text)) {
+            return;
+        }
+
+        setTarefas(prev => prev.map(item => ( item.id === tarefaId ? novoValor : item)))
     }
 
     const removerTarefa = id => {
@@ -22,6 +29,8 @@ const TarefaLista = () => {
 
         setTarefas(removeArr);
     }
+
+
 
     const completeTodo = id => {
         let updateTarefas = tarefas.map( tarefa => {
@@ -36,7 +45,8 @@ const TarefaLista = () => {
         <div>
            <h1>Quais são seus planos para hoje?</h1>
            <TarefaForm onSubmit={addTarefa} />
-           <Tarefa tarefas={tarefas} completeTodo={completeTodo} removerTarefa={removerTarefa}/>
+           <Tarefa tarefas={tarefas} completeTodo={completeTodo} removerTarefa={removerTarefa}
+           updateTarefa={updateTarefa}/>
         </div>
     )
 }
