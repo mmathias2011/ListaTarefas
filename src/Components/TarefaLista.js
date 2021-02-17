@@ -17,6 +17,12 @@ const TarefaLista = () => {
         console.log(...tarefas)
     }
 
+    const removerTarefa = id => {
+        const removeArr = [...tarefas].filter(tarefa => tarefa.id !== id )
+
+        setTarefas(removeArr);
+    }
+
     const completeTodo = id => {
         let updateTarefas = tarefas.map( tarefa => {
             if(tarefa.id ===id ) {
@@ -30,7 +36,7 @@ const TarefaLista = () => {
         <div>
            <h1>Quais são seus planos para hoje?</h1>
            <TarefaForm onSubmit={addTarefa} />
-           <Tarefa tarefas={tarefas} completeTodo={completeTodo} />
+           <Tarefa tarefas={tarefas} completeTodo={completeTodo} removerTarefa={removerTarefa}/>
         </div>
     )
 }

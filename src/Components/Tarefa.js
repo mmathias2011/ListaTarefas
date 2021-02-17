@@ -5,7 +5,7 @@ import { TiEdit } from 'react-icons/ti'
 
 
 
-const Tarefa = ({tarefas, completeTodo}) => {
+const Tarefa = ({tarefas, completeTodo, removerTarefa }) => {
 
     const [ editar, setEditar ] = useState({
         id:null,
@@ -22,8 +22,14 @@ const Tarefa = ({tarefas, completeTodo}) => {
                  {tarefa.text}
              </div>
              <div className="icons">
-                 <RiCloseCircleLine />
-                 <TiEdit />
+                 <RiCloseCircleLine
+                 onClick={() => removerTarefa(tarefa.id)}
+                 className='delete-icon'
+                 />
+                 <TiEdit
+                 onClick={() => setEditar({id: tarefa.id, value: tarefa.text})}
+                 className='edit-icon'
+                 />
              </div>
         </div>
    ))
