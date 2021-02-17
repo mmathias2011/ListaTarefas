@@ -1,11 +1,12 @@
 import React from 'react'
 import './App.css';
-import TarefaForm from './Components/TarefaForm';
+import TarefaLista from './Components/TarefaLista';
+
 
 function App() {
   return (
     <div className="tarefa-app">
-      <TarefaForm />
+      <TarefaLista />
     </div>
   );
 }
